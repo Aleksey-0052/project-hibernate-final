@@ -44,7 +44,7 @@ public class Country {
     @Column(name = "gnp")
     private BigDecimal GNP;
 
-    @Column(name = "gnp_id")
+    @Column(name = "gnpo_id")
     private BigDecimal GNPOId;
 
     @Column(name = "local_name")
@@ -56,9 +56,10 @@ public class Country {
     @Column(name = "head_of_state")
     private String headOfState;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "capital")
     private City city;
+    // В одной стране одна столица
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "country_id")
